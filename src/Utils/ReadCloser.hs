@@ -1,15 +1,13 @@
 module Utils.ReadCloser where
 
-import           Data.ByteString 
-import           Data.ByteString.Char8 
-import           Control.Monad
-import           System.IO
 import           Types.Utils.ReadCloser
+import qualified Network.Socket as SocketT
+import qualified Network.Simple.TCP as TCP
 
 
-mkReadCloser :: Handle -> ReadCloser
-mkReadCloser h = 
+mkReadCloser :: SocketT.Socket -> ReadCloser
+mkReadCloser s = 
   ReadCloser 
-    { rcReader = Reader (\n -> hGetSome h n)
-    , rcCloser = Closer (hClose h)
+    { rcReader = Reader (\n -> TCP.recv s n)
+    , rcCloser = Closer (TCP.closeSock s)
     }

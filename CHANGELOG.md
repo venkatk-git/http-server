@@ -1,5 +1,7 @@
 # Revision history for http-server
 
-## 0.1.0.0 -- YYYY-mm-dd
+## 0.2.0.0 -- 
+* tcp
 
-* First version. Released on an unsuspecting world.
+## 0.1.0.0 -- 18-10-2025 
+* http streams
